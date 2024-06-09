@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Button, Table, Popconfirm, message } from "antd";
+import { Table, Popconfirm, message } from "antd";
 import axios from "axios";
 import { useEffect } from "react";
 import Update from "./Update";
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import Add from "./Add";
 
 const DataForm = () => {
@@ -88,14 +89,14 @@ const DataForm = () => {
       key: 'action',
       render: (text, record) => (
         <span className="flex gap-3">
-          <Button onClick={() => handleUpdateClick(record)}>Update</Button>
+          <EditOutlined onClick={() => handleUpdateClick(record)} style={{color: 'blue'}}>Update</EditOutlined>
           <Popconfirm
             title="Are you sure you want to delete this data?"
             onConfirm={() => handleDelete(record._id)}
             okText="Yes"
             cancelText="No"
           >
-            <Button type="primary" danger>Delete</Button>
+            <DeleteOutlined type="primary" style={{color: 'red'}}>Delete</DeleteOutlined>
           </Popconfirm>
         </span>
       ),
